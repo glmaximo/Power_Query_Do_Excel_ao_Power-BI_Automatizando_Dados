@@ -1,30 +1,41 @@
-# Projeto 2: Fundos de Investimento (CVM)
+# Projeto 2: Ações da B3 (Yahoo Finance / yfinance)
 
 ## 📌 Sobre o projeto
 
-Este projeto tem como objetivo demonstrar, na prática, o uso do **Power Query (linguagem M)** para automatizar o processo de extração, transformação e carga (ETL) de dados públicos, utilizando como base dados abertos de **Fundos de Investimento** disponibilizados pela **CVM** (Comissão de Valores Mobiliários).
+Este projeto tem como objetivo treinar, na prática, o uso do **Power Query (linguagem M)** para importar, tratar e transformar dados de mercado. Os dados de cotações de ações da B3 já foram **extraídos previamente pelo professor** via API do Yahoo! Finance (biblioteca Python `yfinance`) e disponibilizados prontos, em três formatos, para os alunos praticarem a etapa de ETL diretamente no Power Query.
 
-## 🗂️ Fontes dos dados
+## 🗂️ Sobre os dados
 
-### 1. Fundos de Investimento: Informe Diário
-O conjunto de dados disponibiliza os informes diários dos fundos de investimento nos últimos doze meses, atualizados diariamente para os meses corrente e anterior, e semanalmente para os demais meses do histórico.
-- **Link:** https://dados.cvm.gov.br/dataset/fi-doc-inf_diario
-- **Formato:** TXT / ZIP
-- **Conteúdo:** valor da carteira, patrimônio líquido, valor da cota, captações e resgates por fundo e data
+- **Origem original:** Yahoo! Finance (extraído via `yfinance`)
+- **Ativos:** ~36 ações listadas na B3 (blue chips / componentes do Ibovespa), sufixo `.SA`
+- **Período:** histórico de 1 ano, granularidade diária
+- **Conteúdo:** preço de abertura, fechamento, máxima, mínima, volume e fechamento ajustado, por ticker e data
 
-### 2. Fundos de Investimento: Informação Cadastral
-- **Link:** https://dados.cvm.gov.br/dataset/fi-cad
-- **Formato:** ZIP / TXT / CSV
-- **Conteúdo:** dados cadastrais dos fundos (CNPJ, data de registro, situação, classe, administrador)
+> ℹ️ Os arquivos já contemplam correções de tickers que passaram por fusões, incorporações ou trocas de código recentes na B3 (ex.: JBSS3 → JBSS32, BRFS3+MRFG3 → MBRF3, ELET3/ELET6 → AXIA3/AXIA6).
 
-- **Portal geral:** https://dados.cvm.gov.br/
-- **Periodicidade:** Diária (Informe Diário) / Diária no último dia útil (Cadastral)
+## 📁 Arquivos disponíveis
 
-## 🎯 Objetivo do projeto
+| Arquivo | Formato | Uso recomendado |
+|---|---|---|
+| `yfinance_dados_<data_hora>.csv` | CSV | Prática de `Csv.Document` |
+| `yfinance_dados_<data_hora>.json` | JSON | Prática de `Json.Document` |
+| `yfinance_dados_<data_hora>.parquet` | Parquet | Prática de `Parquet.Document` |
 
-Construir um pipeline em Power Query capaz de:
+Os três contêm exatamente os mesmos dados — a ideia é praticar a importação de cada formato separadamente no Power Query.
 
-1. Importar os dados de Informe Diário e Informação Cadastral dos fundos;
-2. Relacionar os dois conjuntos via CNPJ do fundo;
-3. Tratar e padronizar colunas (tipos, nomes, categorias);
-4. Gerar uma base final consolidada, pronta para análise (Power BI / Excel).
+## 🎯 Objetivo do exercício (para os alunos)
+
+1. Importar cada um dos três arquivos no Power Query, usando a função de importação correspondente ao formato;
+2. Comparar o resultado de cada importação (tipos de dados, performance, facilidade de tratamento);
+3. Tratar e padronizar colunas (tipos, nomes, datas);
+4. Construir uma consulta final consolidada, pronta para análise (Power BI / Excel).
+
+## ⚙️ Como usar
+
+1. Baixe um dos arquivos da pasta deste projeto;
+2. No Power Query, use a função de importação correspondente ao formato escolhido;
+3. Siga o roteiro de tratamento proposto em aula (ou pelo material complementar do professor).
+
+## 📝 Observações
+
+- Os dados são estáticos (extração pontual) — não serão atualizados automaticamente. Para uma extração nova, é necessário rodar o script de extração novamente (disponível à parte, para referência de quem quiser entender o processo completo).
