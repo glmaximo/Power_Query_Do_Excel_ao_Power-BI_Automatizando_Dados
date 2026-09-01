@@ -1,4 +1,4 @@
-# Projeto 1 — Censo da Educação Básica
+# Projeto 1 | Censo da Educação Básica
 
 ## 📌 Sobre o projeto
 
@@ -21,4 +21,3 @@ Construir um pipeline em Power Query capaz de:
 3. Filtrar e consolidar as informações relevantes;
 4. Gerar uma base final pronta para análise (Power BI / Excel).
 
-## 📁 Estrutura de pastas (sugerida)
