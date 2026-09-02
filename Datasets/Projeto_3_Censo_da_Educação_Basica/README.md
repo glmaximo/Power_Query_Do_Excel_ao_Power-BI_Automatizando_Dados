@@ -12,12 +12,6 @@ Este projeto tem como objetivo demonstrar, na prática, o uso do **Power Query (
 - **Periodicidade:** Anual
 - **Formato original:** CSV / dados delimitados por `;`
 
-## ☁️ Dados brutos
-
-Devido ao tamanho dos arquivos, os microdados não são versionados neste repositório. Os CSVs originais, exatamente como publicados pelo INEP, estão disponíveis na pasta:
-
-**[microdados_censo_escolar_2025_v2](https://1drv.ms/f/c/4edf03067c9953ea/IgBwVKIUlrK7TJWQ-DpxSGgmAe2M8JzkATfsCaarIR6f7Zs?e=eokOAe)**
-
 ## 🔑 Acesso às bases de dados e dicionários
 
 O acesso às bases completas (parquet) e aos dicionários de variáveis deste projeto é feito por meio da pasta compartilhada no OneDrive:
