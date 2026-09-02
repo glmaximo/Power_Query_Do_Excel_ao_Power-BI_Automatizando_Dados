@@ -1,35 +1,37 @@
-# Projeto 2: Raio-X das Cidades
+# Projeto 3: Censo da Educação Básica
 
 ## 📌 Sobre o projeto
 
-Este projeto tem como objetivo demonstrar, na prática, o uso do **Power Query (linguagem M)** para automatizar o processo de extração, transformação e carregamento (ETL) de dados públicos, utilizando como base o **mape_municipios**, um dos bancos de dados mais completos sobre os municípios brasileiros, com 30 anos de histórico, 17 dimensões, 31 pesquisas e mais de 450 variáveis, produzido pelo MAPE (Laboratório de Monitoramento e Avaliação de Políticas e Eleições, IESP-UERJ).
+Este projeto tem como objetivo demonstrar, na prática, o uso do **Power Query (linguagem M)** para automatizar o processo de extração, transformação e carga (ETL) de dados públicos, utilizando como base os **microdados do Censo da Educação Básica**, disponibilizados anualmente pelo **INEP** (Instituto Nacional de Estudos e Pesquisas Educacionais Anísio Teixeira).
 
 ## 📁 Fonte dos dados
 
-- **Órgão responsável:** MAPE (IESP-UERJ), com dados compilados de IBGE, TSE, DATASUS, IPEA e outras fontes oficiais
-- **Nome do levantamento:** mape_municipios Database
-- **Link oficial (OSF):** https://osf.io/3yka9/
-- **DOI:** 10.17605/OSF.IO/3YKA9
-- **Site do projeto:** https://mape.org.br/dados/
-- **Periodicidade:** painel histórico consolidado (município-ano), atualizações periódicas
-- **Formato original:** CSV / dados delimitados por vírgula
+- **Órgão responsável:** INEP
+- **Nome do levantamento:** Censo da Educação Básica
+- **Link oficial (INEP):** https://www.gov.br/inep/pt-br/acesso-a-informacao/dados-abertos/microdados/censo-escolar
+- **Periodicidade:** Anual
+- **Formato original:** CSV / dados delimitados por `;`
 
 ## ☁️ Dados brutos
 
-Base em formato de painel (município-ano), somando 452 variáveis e mais de 180 mil observações, harmonizando pesquisas de diferentes órgãos e recortes temporais numa estrutura única.
+Devido ao tamanho dos arquivos (vários gigabytes), os microdados **não são versionados neste repositório**. Os CSVs originais, exatamente como publicados pelo INEP, ficam disponíveis em:
+
+📂 **[microdados_censo_escolar_2025_v2](https://1drv.ms/f/c/4edf03067c9953ea/IgBwVKIUlrK7TJWQ-DpxSGgmAe2M8JzkATfsCaarIR6f7Zs?e=eokOAe)**
 
 ## 🔑 Acesso às bases de dados e dicionários
 
-O acesso às bases completas (parquet) e aos dicionários de variáveis deste projeto é feito por meio da pasta compartilhada no OneDrive:
+O parquet completo (já convertido, leve e otimizado) e os dicionários de variáveis deste projeto ficam na pasta:
 
-**[Projeto_2_Raio-X_das_Cidades](https://1drv.ms/f/c/4edf03067c9953ea/IgAuD3XBX5uhSrDJ_nzzQdo6AUj0r7A4gCRHtqo1nLUD-74?e=DolYfN)**
+📂 **[Projeto_3_Censo_da_Educação_Básica](https://1drv.ms/f/c/4edf03067c9953ea/IgDD0jgQ-56FTqjSW25RS9ouARewHs-m2SyazY-OCI9gYQw?e=9b7MpN)**
 
-O repositório no GitHub mantém apenas uma amostra leve dos dados (`Datasets/mape_municipios_amostra/`) para prática rápida em aula, o dataset completo e os dicionários ficam nessa pasta do OneDrive.
+O repositório no GitHub mantém apenas uma amostra leve dos dados (`Datasets/censo_escolar_2025_amostra/`) para prática rápida em aula, junto com o dicionário de dados. O dataset completo (bruto e convertido) fica nas pastas do OneDrive acima.
+
+> ⚠️ Baixe os arquivos necessários antes de executar as consultas do Power Query.
 
 ## 🎯 O que vamos praticar
 
-- Importação e limpeza de uma base ampla (centenas de colunas)
-- Seleção e renomeação de colunas relevantes para o recorte da aula
-- Tratamento de tipos de dados e valores nulos em painel histórico
-- Transformação de estrutura larga (wide) para longa (long), quando aplicável
-- Preparação da base para uso posterior no Power BI
+1. Importar os microdados brutos do Censo da Educação Básica (a partir da pasta compartilhada)
+2. Tratar e padronizar as colunas (tipos, nomes, categorias)
+3. Filtrar e consolidar as informações relevantes
+4. Simular o cenário de automação: "todo ano cai um CSV novo na pasta", com a query se adaptando sem reescrita manual
+5. Gerar uma base final pronta para análise em Power BI / Excel
